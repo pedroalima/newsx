@@ -1,7 +1,13 @@
 const express = require("express")
+const { v4 } = require('uuid')
 const newsRouter = express.Router()
 
 const news = []
+
+// Functions utils
+const getId = (elementList, id) => {
+    return elementList.find(element => element.id === Number(id))
+}
 
 // Get all news
 newsRouter.get("/", (req, res) => {
@@ -10,7 +16,7 @@ newsRouter.get("/", (req, res) => {
 
 // Get news by ID
 newsRouter.get("/:id", (req, res) => {
-    const newsId = news.find(element => element.id === Number(req.params.id))
+    const newsId = getId(news, req.params.id)
     newsId ? res.send(newsId) : res.status(404).send("News not found")
 })
 
@@ -18,6 +24,7 @@ newsRouter.get("/:id", (req, res) => {
 newsRouter.post("/", (req, res) => {
     const { lead_image, title, date } = req.body
     const notice = {
+        id: v4(),
         lead_image,
         title,
         date
