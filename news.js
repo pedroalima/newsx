@@ -2,16 +2,9 @@ const express = require("express")
 const { v4 } = require('uuid')
 const newsRouter = express.Router()
 
+const { getId, getIndex } = require("./utils")
+
 const news = []
-
-// Functions utils
-const getId = (id, elementList) => {
-    return elementList.find(element => element.id === id)
-}
-
-const getIndex = (id, elementList) => {
-    return elementList.findIndex(element => element.id === id)
-}
 
 // Get all news
 newsRouter.get("/", (req, res) => {
@@ -38,7 +31,7 @@ newsRouter.post("/", (req, res) => {
 })
 
 // Update news
-newsRouter.put("/:id", (req, res, next) => {
+newsRouter.put("/:id", (req, res) => {
     const { id } = req.params
     const noticeIndex = getIndex(id, news)
     const { lead_image, title, date } = req.body
@@ -52,7 +45,19 @@ newsRouter.put("/:id", (req, res, next) => {
         news[noticeIndex] = newNotice
         res.json(news[noticeIndex])
     } else {
-        res.status(404).send("Item not found")
+        res.status(404).send("News not found")
+    }
+})
+
+// Delete news
+newsRouter.delete("/:id", (req, res) => {
+    const { id } = req.params
+    const noticeIndex = getIndex(id, news)
+    if (noticeIndex !== -1) {
+        news.splice(noticeIndex, 1)
+        res.status(204).send()
+    } else {
+        res.status(404).send("News not found")
     }
 })
 
