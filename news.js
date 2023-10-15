@@ -2,16 +2,9 @@ const express = require("express")
 const { v4 } = require('uuid')
 const newsRouter = express.Router()
 
+const { getId, getIndex } = require("./utils")
+
 const news = []
-
-// Functions utils
-const getId = (id, elementList) => {
-    return elementList.find(element => element.id === id)
-}
-
-const getIndex = (id, elementList) => {
-    return elementList.findIndex(element => element.id === id)
-}
 
 // Get all news
 newsRouter.get("/", (req, res) => {
