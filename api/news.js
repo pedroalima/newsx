@@ -3,12 +3,17 @@ const { v4 } = require('uuid')
 const newsRouter = express.Router()
 
 const { getId, getIndex } = require("./utils")
-
-const news = []
+const { db } = require("./db")
 
 // Get all news
 newsRouter.get("/", (req, res) => {
-    res.send(news)
+    const q = "SELECT * FROM news"
+    
+    db.query(q, (err, data) => {
+        if (err) res.json(err)
+
+        res.status(200).json(data)
+    })
 })
 
 // Get news by ID
