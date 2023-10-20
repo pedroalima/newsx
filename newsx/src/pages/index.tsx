@@ -1,7 +1,12 @@
+import { Navbar } from "../shared/components/header";
 
 
 export const Home = () => {
 	return (
-		<div>Home</div>
+		<>
+			<header>
+				<Navbar />
+			</header>
+		</>
 	);
 };
