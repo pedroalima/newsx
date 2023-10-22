@@ -1,13 +1,24 @@
 import * as M from "@mui/material";
 
-export const GridNews = () => {
+type AllNewsType = {
+	id: number,
+	lead_image: string,
+	title: string,
+	date: string
+}
+
+export const GridNews = ({ allNews } : {allNews: AllNewsType[]})  => {
 	return (
-		<M.Card>
-			<M.CardMedia />
-			<M.CardContent>
-				<M.Typography gutterBottom variant="h5" component="div">Título da notícia</M.Typography>
-				<M.Typography gutterBottom variant="h5" component="div">20 de janeiro de 2023</M.Typography>
-			</M.CardContent>
-		</M.Card>
+		<>
+			{allNews && allNews.map(news => (
+				<M.Card key={news.id}>
+					<M.CardMedia image={news.lead_image} />
+					<M.CardContent>
+						<M.Typography gutterBottom variant="h5" component="div">{news.title}</M.Typography>
+						<M.Typography gutterBottom variant="h5" component="div">{news.date}</M.Typography>
+					</M.CardContent>
+				</M.Card>
+			))}
+		</>
 	);
 };

@@ -1,9 +1,25 @@
 import * as M from "@mui/material";
 import { GridNews } from "../shared/components/grid-news";
 import { Navbar } from "../shared/components/navbar";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export const Home = () => {
 	const theme = M.useTheme();
+	const [allNews , setAllNews] = useState([]);
+
+	const getAllNews = async () => {
+		try {
+			const res = await axios.get("http://localhost:4001/news");
+			setAllNews(res.data);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	useEffect(() => {
+		getAllNews();
+	}, [setAllNews]);
 
 	return (
 		<>
@@ -17,7 +33,7 @@ export const Home = () => {
 				paddingY={theme.spacing(5)}
 				sx={{background: theme.palette.background.default}}
 			>
-				<GridNews />
+				<GridNews allNews={allNews} />
 			</M.Box>
 
 			<M.Box 
