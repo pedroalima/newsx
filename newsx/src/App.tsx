@@ -1,7 +1,11 @@
+import { ThemeProvider } from "@mui/material";
+import { Theme } from "./shared/theme";
+import { Home } from "./pages";
+
 export const App = () => {
 	return (
-		<div>
-			<h1>Hello World</h1>
-		</div>
+		<ThemeProvider theme={Theme}>
+			<Home />
+		</ThemeProvider>
 	);
 };
