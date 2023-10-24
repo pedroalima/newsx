@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 export const Home = () => {
 	const theme = M.useTheme();
 	const [allNews, setAllNews] = useState([]);
+	
 
 	const getAllNews = async () => {
 		try {
@@ -32,7 +33,7 @@ export const Home = () => {
 				paddingX={theme.spacing(8)}
 				paddingY={theme.spacing(5)}
 				sx={{background: theme.palette.background.default}}
-			>
+			> 
 				<GridNews allNews={allNews} />
 			</M.Box>
 
