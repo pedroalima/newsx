@@ -1,6 +1,7 @@
 import * as M from "@mui/material";
 import axios from "axios";
-import { useState } from "react";
+import { NewsType } from "../news";
+import { useNavigate } from "react-router-dom";
 
 type AllNewsType = {
 	id: number,
@@ -9,9 +10,8 @@ type AllNewsType = {
 	date: string
 }
 
-export const GridNews = ({ allNews } : {allNews: AllNewsType[]})  => {
-	const [news, setNews] = useState([]);
-
+export const GridNews = ({ allNews, setNews } : {allNews: AllNewsType[], setNews: (data: NewsType)=> void})  => {
+	const navigate = useNavigate();
 	const getNews = async (id: number) => {
 		try {
 			const response = await axios.get(`http://localhost:4001/news/${id}`);
@@ -25,6 +25,7 @@ export const GridNews = ({ allNews } : {allNews: AllNewsType[]})  => {
 
 	const goToNews = (id: number) => {
 		getNews(id);
+		navigate(`news/${id}`);
 	};
 
 	return (
