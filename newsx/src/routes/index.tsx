@@ -27,9 +27,7 @@ export const AppRoutes = () => {
 		<Routes>
 			<Route path="/" element={ <Home /> }>
 				<Route path="/" element={ <GridNews allNews={allNews} setNews={setNews} /> } />
-				{news && 
-					<Route path="news/:id" element={ <News news={news} /> } />
-				}
+				<Route path="news/:id" element={ <News news={news} /> } />
 			</Route>
 
 			<Route path="*" element={ <Navigate to="/" />} />

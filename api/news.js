@@ -19,7 +19,13 @@ newsRouter.get("/", (req, res) => {
 // Get news by ID
 newsRouter.get("/:id", (req, res) => {
     const newsId = getId(req.params.id, news)
-    newsId ? res.send(newsId) : res.status(404).send("News not found")
+    const q = "SELECT * FROM news WHERE id = ? LIMIT 1";
+
+    db.query(q, [newsId], (err, data) => {
+        if (err) res.json(err)
+
+        res.status(200).json(data[0])
+    })
 })
 
 // Create news
