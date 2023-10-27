@@ -17,28 +17,35 @@ newsRouter.get("/", (req, res) => {
 })
 
 // Get news by ID
-newsRouter.get("/:id", (req, res) => {
-    const newsId = getId(req.params.id, news)
-    const q = "SELECT * FROM news WHERE id = ? LIMIT 1";
+// newsRouter.get("/:id", (req, res) => {
+//     const newsId = getId(req.params.id, news)
+//     const q = "SELECT * FROM news WHERE id = ? LIMIT 1";
 
-    db.query(q, [newsId], (err, data) => {
-        if (err) res.json(err)
+//     db.query(q, [newsId], (err, data) => {
+//         if (err) res.json(err)
 
-        res.status(200).json(data[0])
-    })
-})
+//         res.status(200).json(data[0])
+//     })
+// })
 
 // Create news
 newsRouter.post("/", (req, res) => {
-    const { lead_image, title, date } = req.body
+    const { lead_image, title, date, content } = req.body
+    const q = "INSERT INTO news (id, lead_image, title, date, content) VALUES(?)"
+
     const notice = {
         id: v4(),
         lead_image,
         title,
-        date
+        date,
+        content
     }
-    news.push(notice)
-    res.status(201).json(notice)
+
+    db.query(q, [notice], (err) => {
+        if (err) return res.json(err)
+
+        return res.status(201).json("User created successfully")
+    })
 })
 
 // Update news

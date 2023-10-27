@@ -1,9 +1,14 @@
 import * as M from "@mui/material";
 import { Navbar } from "../../shared/components/navbar";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 
 export const Home = () => {
 	const theme = M.useTheme();
+	const navigate = useNavigate();
+
+	const sendToCreate = () => {
+		navigate("/create-news");
+	};
 
 	return (
 		<>
@@ -18,6 +23,14 @@ export const Home = () => {
 				sx={{background: theme.palette.background.default}}
 			>
 				<Outlet />
+				<M.SpeedDial
+					ariaLabel="SpeedDial openIcon example"
+					sx={{ position: "absolute", bottom: 16, right: 16 }}
+					icon={<M.SpeedDialIcon />}
+					onClick={(sendToCreate)}
+				>
+				
+				</M.SpeedDial>
 			</M.Box>
 
 			<M.Box 

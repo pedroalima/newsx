@@ -1,7 +1,7 @@
 import * as M from "@mui/material";
-import axios from "axios";
-import { NewsType } from "../news";
-import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import { NewsType } from "../news";
+// import { useNavigate } from "react-router-dom";
 
 type AllNewsType = {
 	id: number,
@@ -10,28 +10,29 @@ type AllNewsType = {
 	date: string
 }
 
-export const GridNews = ({ allNews, setNews } : {allNews: AllNewsType[], setNews: (data: NewsType)=> void})  => {
-	const navigate = useNavigate();
-	const getNews = async (id: number) => {
-		try {
-			const response = await axios.get(`http://localhost:4001/news/${id}`);
-			const data = response.data;
+export const GridNews = ({ allNews } : {allNews: AllNewsType[]})  => {
+	// const navigate = useNavigate();
 
-			setNews(data);
-		} catch (error) {
-			console.log(error);
-		}
-	};
+	// const getNews = async (id: number) => {
+	// 	try {
+	// 		const response = await axios.get(`http://localhost:4001/news/${id}`);
+	// 		const data = response.data;
 
-	const goToNews = (id: number) => {
-		getNews(id);
-		navigate(`news/${id}`);
-	};
+	// 		setNews(data);
+	// 	} catch (error) {
+	// 		console.log(error);
+	// 	}
+	// };
+
+	// const goToNews = (id: number) => {
+	// 	getNews(id);
+	// 	navigate(`news/${id}`);
+	// };
 
 	return (
 		<>
 			{allNews && allNews.map(news => (
-				<M.Button key={news.id} onClick={() => goToNews(news.id)}>
+				<M.Button key={news.id}>
 					<M.Card>
 						<M.CardMedia image={news.lead_image} />
 						<M.CardContent>
