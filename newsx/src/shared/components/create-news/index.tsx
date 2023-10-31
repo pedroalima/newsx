@@ -1,30 +1,35 @@
 import * as M from "@mui/material";
 import * as S from "./style";
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import axios from "axios";
 
 export const CreateNews = () => {
-	const [leadImage, setLeadImage] = useState("");
-	const [title, setTitle] = useState("");
-	const [content, setContent] = useState("");
-	const [date, setDate] = useState("");
+	const [news, setNews] = useState({
+		lead_image: "",
+		title: "",
+		content: "",
+		date: ""
+	});
 
-	console.log(leadImage);
-	console.log(title);
-	console.log(content);
-	console.log(date);
+	const handleChangeValues = (event: ChangeEvent<HTMLInputElement>) => {
+		const { name, value } = event.target;
+		setNews((prev) => ({
+			...prev,
+			[name]: value,
+		}));
+	};
 
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		try {
 			const res = await axios.post("http://localhost:4001/news", {
-				lead_image: leadImage,
-				title: title,
-				content: content,
-				date: date
+				lead_image: news.lead_image,
+				title: news.title,
+				content: news.content,
+				date: news.date
 			});
-
+	
 			console.log(res.data);
 		} catch (error) {
 			console.log(error);
@@ -39,16 +44,14 @@ export const CreateNews = () => {
 					label="Lead image" 
 					variant="standard" 
 					size="small" 
-					value={leadImage} 
-					onChange={(e) => setLeadImage(e.target.value)} 
+					onChange={handleChangeValues} 
 				/>
 				<M.TextField 
 					name="title" 
 					label="Title" 
 					variant="standard" 
 					size="small" 
-					value={title} 
-					onChange={(e) => setTitle(e.target.value)} 
+					onChange={handleChangeValues} 
 				/>
 				<M.TextField
 					name="content"
@@ -56,14 +59,12 @@ export const CreateNews = () => {
 					multiline
 					fullWidth
 					maxRows={9}
-					value={content} 
-					onChange={(e) => setContent(e.target.value)} 
+					onChange={handleChangeValues} 
 				/>
 				<S.Input 
 					name="date" 
 					type="date"
-					value={date}
-					onChange={(e) => setDate(e.target.value)}
+					onChange={handleChangeValues}
 				/>
 				<M.Button type="submit" color="secondary" variant="contained">Confirm</M.Button>
 			</S.Form>
