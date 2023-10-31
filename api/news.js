@@ -61,13 +61,13 @@ newsRouter.put("/:id", (req, res) => {
 // Delete news
 newsRouter.delete("/:id", (req, res) => {
     const { id } = req.params
-    const noticeIndex = getIndex(id, news)
-    if (noticeIndex !== -1) {
-        news.splice(noticeIndex, 1)
-        res.status(204).send()
-    } else {
-        res.status(404).send("News not found")
-    }
+    const q = "DELETE FROM news WHERE id = ?"
+
+    db.query(q, [id], (err) => {
+        if (err) return res.json(err)
+
+        return res.status(204).json("News deleted successfully")
+    })
 })
 
 module.exports = newsRouter
