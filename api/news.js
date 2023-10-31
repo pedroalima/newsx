@@ -7,7 +7,7 @@ const { db } = require("./db")
 
 // Get all news
 newsRouter.get("/", (req, res) => {
-    const q = "SELECT * FROM news"
+    const q = "SELECT * FROM new_table"
     
     db.query(q, (err, data) => {
         if (err) res.json(err)
@@ -31,20 +31,20 @@ newsRouter.get("/", (req, res) => {
 // Create news
 newsRouter.post("/", (req, res) => {
     const { lead_image, title, date, content } = req.body
-    const q = "INSERT INTO news (id, lead_image, title, date, content) VALUES(?)"
+    const q = "INSERT INTO new_table (id, lead_image, title, date, content) VALUES (?)"
 
     const notice = {
         id: v4(),
-        lead_image,
-        title,
-        date,
-        content
+        lead_image: lead_image,
+        title: title,
+        date: date, 
+        content: content
     }
-
+    console.log(notice)
     db.query(q, [notice], (err) => {
         if (err) return res.json(err)
 
-        return res.status(201).json("User created successfully")
+        return res.status(201).json("News created successfully")
     })
 })
 
