@@ -20,6 +20,7 @@ export const Home = () => {
 				component="main" 
 				paddingX={theme.spacing(8)}
 				paddingY={theme.spacing(5)}
+				minHeight="80vh"
 				sx={{background: theme.palette.background.default}}
 			>
 				<Outlet />
