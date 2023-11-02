@@ -15,17 +15,17 @@ newsRouter.get("/", (req, res) => {
     })
 })
 
-// Get news by ID
-// newsRouter.get("/:id", (req, res) => {
-//     const newsId = getId(req.params.id, news)
-//     const q = "SELECT * FROM news WHERE id = ? LIMIT 1";
+//Get news by ID
+newsRouter.get("/:id", (req, res) => {
+    const newsId = req.params.id
+    const q = "SELECT * FROM news WHERE id = ? LIMIT 1";
 
-//     db.query(q, [newsId], (err, data) => {
-//         if (err) res.json(err)
+    db.query(q, [newsId], (err, data) => {
+        if (err) res.json(err)
 
-//         res.status(200).json(data[0])
-//     })
-// })
+        res.status(200).json(data[0])
+    })
+})
 
 // Create news
 newsRouter.post("/", (req, res) => {
