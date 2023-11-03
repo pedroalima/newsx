@@ -26,14 +26,13 @@ export const CreateNews = () => {
 		e.preventDefault();
 
 		try {
-			const res = await axios.post("http://localhost:4001/news", {
+			await axios.post("http://localhost:4001/news", {
 				lead_image: news.lead_image,
 				title: news.title,
 				content: news.content,
 				date: news.date
 			});
-			
-			console.log(res.data);
+
 		} catch (error) {
 			console.log(error);
 		}
