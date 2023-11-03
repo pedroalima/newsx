@@ -37,11 +37,13 @@ export const Home = () => {
 			<M.Box 
 				component="footer"
 				paddingX={theme.spacing(8)}
-				paddingY={theme.spacing(2)}
-				height="15vh"
+				paddingTop={theme.spacing(8)}
+				display="flex"
+				justifyContent="center"
+				height="5vh"
 				sx={{ background: theme.palette.primary.dark}}
 			>
-				<M.Typography variant="subtitle2" color="secondary">Copyright</M.Typography>
+				<M.Typography variant="subtitle2" color="secondary">© 2023 Pedro Lima</M.Typography>
 			</M.Box>
 		</>
 	);
