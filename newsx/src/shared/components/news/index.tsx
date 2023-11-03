@@ -15,9 +15,7 @@ export const News = ({ news } : { news: NewsType})  => {
 
 	const deleteNews = async (id: number) => {
 		try {
-			const res = await axios.delete(`http://localhost:4001/news/${id}`);
-
-			console.log(res.data);
+			await axios.delete(`http://localhost:4001/news/${id}`);
 		} catch (error) {
 			console.log(error);
 		}
