@@ -28,7 +28,7 @@ export const AppRoutes = () => {
 
 	useEffect(() => {
 		getAllNews();
-	}, [setAllNews]);
+	}, [allNews]);
 
 	return (
 		<Routes>
