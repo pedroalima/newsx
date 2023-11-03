@@ -1,7 +1,14 @@
 import * as M from "@mui/material";
+import { Home } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
 	const theme = M.useTheme();
+	const navigate = useNavigate();
+
+	const handleGoToHome = () => {
+		navigate("/");
+	};
 
 	return (
 		<M.Box sx={{ flexGrow: 1 }}>
@@ -13,6 +20,15 @@ export const Navbar = () => {
 						component="div"
 						sx={{ flexGrow: 1 }}
 					>News X</M.Typography>
+					<M.BottomNavigation sx={{ background: "none"}}>
+						<M.BottomNavigationAction
+							sx={{color: "#FFFFFF"}}
+							label="Home"
+							value="Home"
+							icon={<Home />}
+							onClick={handleGoToHome}
+						/>
+					</M.BottomNavigation>
 				</M.Toolbar>
 			</M.AppBar>
 		</M.Box>
