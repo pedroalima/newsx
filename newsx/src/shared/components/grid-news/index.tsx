@@ -2,6 +2,7 @@ import * as M from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { NewsType } from "../news";
+import { formattedDates } from "../../utils";
 
 type AllNewsType = {
 	id: number,
@@ -43,9 +44,9 @@ export const GridNews = ({ allNews, setNews } : {allNews: AllNewsType[], setNews
 						underline="none"
 						onClick={() => goToNews(news.id)}
 					>
-						<M.Typography gutterBottom variant="h5" component="div">{news.title}</M.Typography>
+						<M.Typography gutterBottom variant="h5" component="h4">{news.title}</M.Typography>
 					</M.Link>
-					<M.Typography gutterBottom variant="body2" component="div">{news.date}</M.Typography>
+					<M.Typography gutterBottom variant="body2" component="p">{formattedDates(news.date, "full")}</M.Typography>
 				</M.Box>
 			))}
 		</M.Card>
