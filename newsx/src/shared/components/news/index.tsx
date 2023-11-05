@@ -1,6 +1,7 @@
 import * as M from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { formattedDates } from "../../utils";
 
 export interface NewsType {
 	id: number,
@@ -33,13 +34,16 @@ export const News = ({ news } : { news: NewsType})  => {
 							color="error"
 							onClick={() => deleteNews(news.id)}
 						>
-							Delete
+							Excluir
 						</M.Button>
 
-						<M.Button variant="contained">Edit</M.Button>
+						<M.Button variant="contained">Editar</M.Button>
 					</M.CardActions>
 					<M.CardContent>
 						<M.Typography variant="h3">{news.title}</M.Typography>
+						<M.Typography variant="body2">{
+							typeof news.date == "string" ? formattedDates(news.date, "full") : news.date
+						}</M.Typography> 
 						<M.Typography variant="body1">{news.content}</M.Typography>  
 					</M.CardContent>
 				</M.Card>

@@ -2,6 +2,7 @@ import * as M from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { NewsType } from "../news";
+import { formattedDates } from "../../utils";
 
 type AllNewsType = {
 	id: number,
@@ -12,6 +13,7 @@ type AllNewsType = {
 
 export const GridNews = ({ allNews, setNews } : {allNews: AllNewsType[], setNews: (data: NewsType) => void})  => {
 	const navigate = useNavigate();
+	const theme = M.useTheme();
 
 	const getNews = async (id: number) => {
 		try {
@@ -30,18 +32,23 @@ export const GridNews = ({ allNews, setNews } : {allNews: AllNewsType[], setNews
 	};
 
 	return (
-		<>
+		<M.Card >
+			<M.CardContent>
+				<M.Typography variant="h4">Editorial</M.Typography>
+			</M.CardContent>
+
 			{allNews && allNews.map(news => (
-				<M.Button key={news.id} onClick={() => goToNews(news.id)}>
-					<M.Card>
-						<M.CardMedia image={news.lead_image} />
-						<M.CardContent>
-							<M.Typography gutterBottom variant="h5" component="div">{news.title}</M.Typography>
-							<M.Typography gutterBottom variant="h5" component="div">{news.date}</M.Typography>
-						</M.CardContent>
-					</M.Card>
-				</M.Button>
+				<M.Box key={news.id} paddingX={theme.spacing(4)} paddingY={theme.spacing(1)}>
+					<M.Link 
+						component="button"
+						underline="none"
+						onClick={() => goToNews(news.id)}
+					>
+						<M.Typography gutterBottom variant="h5" component="h4">{news.title}</M.Typography>
+					</M.Link>
+					<M.Typography gutterBottom variant="body2" component="p">{formattedDates(news.date, "full")}</M.Typography>
+				</M.Box>
 			))}
-		</>
+		</M.Card>
 	);
 };

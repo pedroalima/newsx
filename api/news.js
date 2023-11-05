@@ -42,20 +42,14 @@ newsRouter.post("/", (req, res) => {
 // Update news
 newsRouter.put("/:id", (req, res) => {
     const { id } = req.params
-    const noticeIndex = getIndex(id, news)
-    const { lead_image, title, date } = req.body
-    if (noticeIndex !== -1) {
-        newNotice = {
-            id,
-            lead_image,
-            title,
-            date
-        }
-        news[noticeIndex] = newNotice
-        res.json(news[noticeIndex])
-    } else {
-        res.status(404).send("News not found")
-    }
+    const { lead_image, title, date, content } = req.body
+    const q = "UPDATE news SET lead_image = ?, title = ?, date = ?, content = ? WHERE id = ?"
+
+    db.query(q, [lead_image, title, date, content, id], (err) => {
+        if (err) return res.json(err)
+
+        return res.status(200).json("Updated news successfully")
+    })
 })
 
 // Delete news
