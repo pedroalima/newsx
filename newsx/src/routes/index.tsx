@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { CreateNews } from "../shared/components/create-news";
 import { News } from "../shared/components/news";
+import { EditNews } from "../shared/components/edit-news";
 
 export const AppRoutes = () => {
 	const [allNews, setAllNews] = useState([]);
@@ -36,6 +37,7 @@ export const AppRoutes = () => {
 				<Route path="/" element={ <GridNews allNews={allNews} setNews={setNews} /> } />
 				<Route path="/news/:id" element={ <News news={news} /> } />
 				<Route path="/create-news" element={ <CreateNews /> } />
+				<Route path="/edit-news/:id" element={ <EditNews news={news} /> } />
 			</Route>
 
 			<Route path="*" element={ <Navigate to="/" />} />
