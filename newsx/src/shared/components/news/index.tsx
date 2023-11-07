@@ -13,6 +13,7 @@ export interface NewsType {
 
 export const News = ({ news } : { news: NewsType})  => {
 	const navigate = useNavigate();
+	const theme = M.useTheme();
 
 	const deleteNews = async (id: number) => {
 		try {
@@ -45,9 +46,9 @@ export const News = ({ news } : { news: NewsType})  => {
 						</M.Button>
 					</M.CardActions>
 					<M.CardContent>
-						<M.Typography variant="h3">{news.title}</M.Typography>
-						<M.Typography variant="body2">{!news.date ? news.date : formattedDates(news.date, "full")}</M.Typography>
-						<M.Typography variant="body1">{news.content}</M.Typography>
+						<M.Typography variant="h2" textAlign="center">{news.title}</M.Typography>
+						<M.Typography variant="body2" padding={theme.spacing(2)} textAlign="end">{!news.date ? news.date : formattedDates(news.date, "medium")}</M.Typography>
+						<M.Typography variant="body1" padding={theme.spacing(2)} textAlign="justify">{news.content}</M.Typography>
 					</M.CardContent>
 				</M.Card>
 			}
