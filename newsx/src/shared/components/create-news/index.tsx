@@ -44,21 +44,23 @@ export const CreateNews = () => {
 		<S.Form onSubmit={handleSubmit}>
 			<M.TextField 
 				name="lead_image" 
-				label="Lead image" 
+				label="URL da imagem de capa"
 				variant="standard" 
 				size="small" 
 				onChange={handleChangeValues} 
 			/>
 			<M.TextField 
 				name="title" 
-				label="Title" 
+				label="Título" 
+				fullWidth
 				variant="standard" 
 				size="small" 
 				onChange={handleChangeValues} 
 			/>
 			<M.TextField
 				name="content"
-				label="Content"
+				label="Conteúdo"
+				variant="standard" 
 				multiline
 				fullWidth
 				maxRows={9}
@@ -69,7 +71,7 @@ export const CreateNews = () => {
 				type="date"
 				onChange={handleChangeValues}
 			/>
-			<M.Button type="submit" color="secondary" variant="contained">Confirm</M.Button>
+			<M.Button type="submit" color="secondary" variant="contained">Criar Notícia</M.Button>
 		</S.Form>
 	);
 };

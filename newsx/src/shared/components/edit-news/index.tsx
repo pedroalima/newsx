@@ -16,9 +16,9 @@ export const EditNews = ({ news } : { news: NewsType }) => {
 	const navigate = useNavigate();
 
 	const [newsUpdate, setNewsUpdate] = useState({
-		lead_image: "",
-		title:"",
-		content: "",
+		lead_image: news.lead_image,
+		title: news.title,
+		content: news.content,
 		date: ""
 	});
 
@@ -57,15 +57,17 @@ export const EditNews = ({ news } : { news: NewsType }) => {
 								label="Title" 
 								variant="standard" 
 								size="small"
-								// value={news.title}
+								fullWidth
+								value={newsUpdate.title}
 								onChange={handleChangeValues}
 							/>
 							<M.TextField
 								name="content"
 								label="Content"
+								variant="standard"
 								multiline
 								fullWidth
-								maxRows={9}
+								value={newsUpdate.content}
 								onChange={handleChangeValues}
 							/>
 							<S.Input 
