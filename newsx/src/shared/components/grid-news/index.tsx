@@ -8,6 +8,7 @@ type AllNewsType = {
 	id: number,
 	lead_image: string,
 	title: string,
+	content: string,
 	date: string
 }
 
@@ -46,7 +47,7 @@ export const GridNews = ({ allNews, setNews } : {allNews: AllNewsType[], setNews
 					>
 						<M.Typography gutterBottom variant="h5" component="h4">{news.title}</M.Typography>
 					</M.Link>
-					<M.Typography gutterBottom variant="body2" component="p">{formattedDates(news.date, "full")}</M.Typography>
+					<M.Typography gutterBottom variant="body2" color="secondary" component="p">{formattedDates(news.date, "full")}</M.Typography>
 				</M.Box>
 			))}
 		</M.Card>

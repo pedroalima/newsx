@@ -6,7 +6,7 @@ export const Home = () => {
 	const theme = M.useTheme();
 	const navigate = useNavigate();
 
-	const sendToCreate = () => {
+	const handleGoToCreateNews = () => {
 		navigate("/create-news");
 	};
 
@@ -28,7 +28,7 @@ export const Home = () => {
 					ariaLabel="SpeedDial openIcon example"
 					sx={{ position: "absolute", bottom: 16, right: 16 }}
 					icon={<M.SpeedDialIcon />}
-					onClick={(sendToCreate)}
+					onClick={(handleGoToCreateNews)}
 				>
 				
 				</M.SpeedDial>
@@ -43,7 +43,7 @@ export const Home = () => {
 				height="5vh"
 				sx={{ background: theme.palette.primary.dark}}
 			>
-				<M.Typography variant="subtitle2" color="secondary">© 2023 Pedro Lima</M.Typography>
+				<M.Typography variant="subtitle2" color="secondary">© 2023 - Pedro Lima</M.Typography>
 			</M.Box>
 		</>
 	);
