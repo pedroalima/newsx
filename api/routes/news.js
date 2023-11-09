@@ -1,8 +1,7 @@
 const express = require("express")
 const newsRouter = express.Router()
 
-const { getId, getIndex } = require("./utils")
-const { db } = require("./db")
+const { db } = require("../db")
 
 // Get all news
 newsRouter.get("/", (req, res) => {

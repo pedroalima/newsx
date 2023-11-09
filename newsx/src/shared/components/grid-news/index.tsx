@@ -12,7 +12,7 @@ type AllNewsType = {
 	date: string
 }
 
-export const GridNews = ({ allNews, setNews } : {allNews: AllNewsType[], setNews: (data: NewsType) => void})  => {
+export const GridNews = ({ allNews, topNews, setNews } : {allNews: AllNewsType[], topNews: AllNewsType[], setNews: (data: NewsType) => void})  => {
 	const navigate = useNavigate();
 	const theme = M.useTheme();
 
@@ -33,13 +33,37 @@ export const GridNews = ({ allNews, setNews } : {allNews: AllNewsType[], setNews
 	};
 
 	return (
-		<M.Card >
-			<M.CardContent>
-				<M.Typography variant="h4">Editorial</M.Typography>
-			</M.CardContent>
+		<M.Box>
+			<M.Typography variant="h4">Top News</M.Typography>
+			<M.Box 
+				display="flex" 
+				flexDirection="column" 
+				alignItems="center" 
+				gap={theme.spacing(2)} 
+			>
+				{topNews && topNews.map(news => (
+					<M.Card key={news.id} sx={{ paddingX: theme.spacing(4), paddingY: theme.spacing(1)}}>
+						<M.Link 
+							component="button"
+							underline="none"
+							onClick={() => goToNews(news.id)}
+						>
+							<M.Typography gutterBottom variant="h5" component="h4">{news.title}</M.Typography>
+						</M.Link>
+						<M.Typography gutterBottom variant="body2" color="secondary" component="p">{formattedDates(news.date, "full")}</M.Typography>
+					</M.Card>
+				))}
+			</M.Box>
+
+			<M.Typography variant="h4">Editorial</M.Typography>
 
 			{allNews && allNews.map(news => (
-				<M.Box key={news.id} paddingX={theme.spacing(4)} paddingY={theme.spacing(1)}>
+				<M.Box 
+					key={news.id} 
+					borderBottom="1px solid #6b6b6b" 
+					paddingX={theme.spacing(4)} 
+					paddingY={theme.spacing(1)}
+				>
 					<M.Link 
 						component="button"
 						underline="none"
@@ -50,6 +74,6 @@ export const GridNews = ({ allNews, setNews } : {allNews: AllNewsType[], setNews
 					<M.Typography gutterBottom variant="body2" color="secondary" component="p">{formattedDates(news.date, "full")}</M.Typography>
 				</M.Box>
 			))}
-		</M.Card>
+		</M.Box>
 	);
 };
