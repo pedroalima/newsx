@@ -5,7 +5,7 @@ const { db } = require("../db")
 
 // Get all news
 newsRouter.get("/", (req, res) => {
-    const q = "SELECT * FROM news"
+    const q = "SELECT * FROM news ORDER BY date ASC"
     
     db.query(q, (err, data) => {
         if (err) res.json(err)

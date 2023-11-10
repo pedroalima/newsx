@@ -5,7 +5,7 @@ const { db } = require("../db")
 
 // Get top 3 news
 topNewsRouter.get("/", (req, res) => {
-    const q = "SELECT * FROM news ORDER BY date LIMIT 3;"
+    const q = "SELECT * FROM news ORDER BY date DESC LIMIT 3;"
 
     db.query(q, (err, data) => {
         if (err) res.json(err)
