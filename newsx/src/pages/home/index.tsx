@@ -25,7 +25,7 @@ export const Home = () => {
 				<Outlet />
 				<M.SpeedDial
 					ariaLabel="SpeedDial openIcon example"
-					sx={{ position: "absolute", bottom: 16, right: 16 }}
+					sx={{ position: "fixed", bottom: 16, right: 16 }}
 					icon={<M.SpeedDialIcon />}
 					onClick={(handleGoToCreateNews)}
 				>
