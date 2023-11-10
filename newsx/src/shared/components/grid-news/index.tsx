@@ -34,33 +34,35 @@ export const GridNews = ({ allNews, topNews, setNews } : {allNews: AllNewsType[]
 
 	return (
 		<M.Box>
-			<M.Typography variant="h4">Top News</M.Typography>
 			<M.Box 
 				display="flex" 
-				flexDirection="column" 
-				alignItems="center" 
-				gap={theme.spacing(2)} 
+				flexDirection="row"
+				flexWrap="wrap"
+				alignItems="stretch" 
+				justifyContent="space-between"
+				gap={theme.spacing(2)}
+				borderBottom="2px dotted #a9a9a9"
+				paddingBottom={theme.spacing(4)}
+				marginBottom={theme.spacing(2)}
 			>
 				{topNews && topNews.map(news => (
-					<M.Card key={news.id} sx={{ paddingX: theme.spacing(4), paddingY: theme.spacing(1)}}>
+					<M.Box key={news.id} sx={{ paddingX: theme.spacing(4), paddingY: theme.spacing(1), width: "40%" , flexGrow: "1", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", borderBottom: "1px solid #dadada"}}>
 						<M.Link 
 							component="button"
 							underline="none"
 							onClick={() => goToNews(news.id)}
 						>
-							<M.Typography gutterBottom variant="h5" component="h4">{news.title}</M.Typography>
+							<M.Typography gutterBottom variant="h5" fontWeight="bold" component="h4">{news.title}</M.Typography>
 						</M.Link>
-						<M.Typography gutterBottom variant="body2" color="secondary" component="p">{formattedDates(news.date, "full")}</M.Typography>
-					</M.Card>
+						<M.Typography gutterBottom variant="body2" color="#9d9d9d" component="p">{formattedDates(news.date, "full")}</M.Typography>
+					</M.Box>
 				))}
 			</M.Box>
-
-			<M.Typography variant="h4">Editorial</M.Typography>
 
 			{allNews && allNews.map(news => (
 				<M.Box 
 					key={news.id} 
-					borderBottom="1px solid #6b6b6b" 
+					borderBottom="1px solid #dadada" 
 					paddingX={theme.spacing(4)} 
 					paddingY={theme.spacing(1)}
 				>
