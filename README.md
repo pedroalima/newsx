@@ -6,6 +6,8 @@ O projeto é de minha autoria e foi inspirado em outras aplicações existentes,
 
 ![#](./newsx/public/Desktop.png)
 
+![#](./newsx/public/Frame%202.png)
+
 </br>
 
 ## 🎯 Objetivos
