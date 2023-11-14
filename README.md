@@ -16,7 +16,7 @@ Os usuários podem:
 > - Visualizar as ultimas notícias no top 3 e todas na linha editorial
 > - Adicionar, atualizar e deletar notícias
 
-O objetivo deste projeto foi desenvolver um CRUD utilizando a linguagem Node.js e um banco de dados relacional MySQL.
+O objetivo deste projeto foi desenvolver uma aplicação CRUD utilizando a linguagem Node.js com banco de dados relacional MySQL.
 
 </br>
 
@@ -34,6 +34,8 @@ O objetivo deste projeto foi desenvolver um CRUD utilizando a linguagem Node.js 
 </br>
 
 ## 🧠 Meu aprendizado
+
+O principal desafio desse projeto certamente foi criar e configurar um servidor. Minha base de estudos é pautada por JavaScript. Nada como buscar ter meu primeiro contato com o back-end usando uma linguagem familiar, dessa forma, o Node me ajudou bastante, já que essa linguagem é essencialmente o JavaScript do lado do servidor.
 
 </br>
 
