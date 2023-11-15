@@ -37,6 +37,40 @@ O objetivo deste projeto foi desenvolver uma aplicação CRUD utilizando a lingu
 
 O principal desafio desse projeto certamente foi criar e configurar um servidor. Minha base de estudos é pautada por JavaScript. Nada como buscar ter meu primeiro contato com o back-end usando uma linguagem familiar, dessa forma, o Node me ajudou bastante, já que essa linguagem é essencialmente o JavaScript do lado do servidor.
 
+```js
+const express = require("express")
+const newsRouter = require("./routes/news")
+const topNewsRouter = require("./routes/top-news")
+const app = express()
+
+const PORT = process.env.PORT || 4001
+
+app.use("/news", newsRouter)
+app.use("/top-news", topNewsRouter)
+
+app.listen(PORT, () => {
+    console.log("Server running in port: " + PORT)
+})
+```
+
+Com o auxilio do express podemos criar e configurar nosso servidor, até que de maneira facil, primeiro é necessário instanciar o módulo express, criar uma porta e executar o servidor com a função "app.listen()"
+
+```js
+const express = require("express")
+const newsRouter = express.Router()
+const { db } = require("../db")
+
+newsRouter.get("/", (req, res) => {
+    const q = "SELECT * FROM news ORDER BY date ASC"
+    
+    db.query(q, (err, data) => {
+        if (err) res.json(err)
+
+        res.status(200).json(data)
+    })
+})
+```
+
 </br>
 
 ## 💻 Rodando o projeto
