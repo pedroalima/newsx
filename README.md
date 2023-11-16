@@ -53,7 +53,22 @@ app.listen(PORT, () => {
 })
 ```
 
-Com o auxilio do express podemos criar e configurar nosso servidor, até que de maneira facil, primeiro é necessário instanciar o módulo express, criar uma porta e executar o servidor com a função "app.listen()"
+Com o auxílio do Express, podemos criar e configurar nosso servidor de maneira fácil. Primeiramente, é necessário instanciar o módulo Express, criar uma porta e executar o servidor usando a função 'listen()'.
+
+```js
+const mysql = require("mysql")
+
+const db = mysql.createConnection({
+    host: "localhost",
+    user: "root",
+    password: "",
+    database: "news"
+})
+
+module.exports = { db }
+```
+
+O próximo passo é vincular o banco de dados. Neste projeto, optei por utilizar o MySQL como banco de dados. Acima, vemos como conectar o banco de dados com o servidor.
 
 ```js
 const express = require("express")
@@ -70,6 +85,8 @@ newsRouter.get("/", (req, res) => {
     })
 })
 ```
+
+E, por último, precisamos criar as rotas para ter acesso aos dados do banco. Acima, vemos como realizar uma rota get.
 
 </br>
 
