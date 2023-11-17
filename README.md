@@ -1,12 +1,15 @@
 # News X
 
-Uma página de notícias, com operações CRUD, que permite ao usuário adicionar, atualizar e deletar notícias no banco de dados (MySQL).
+Uma página de notícias, com operações CRUD, vinculada ao banco de dados (MySQL), que permite ao usuário visualizar, adicionar, atualizar e deletar notícias.
 
 O projeto é de minha autoria e foi inspirado em outras aplicações existentes, adaptando seus designs e recursos. A aplicação foi construída utilizando as tecnologias front-end: TypeScript, React, Material-UI (MUI) e Styled Components, ferramentas back-end: Node e MySQL.
 
-![#](./newsx/public/Desktop.png)
+## Screenshots
 
-![#](./newsx/public/Frame%202.png)
+![#](./newsx/public/Desktop.png)
+![#](./newsx/public/Desktop1.png)
+![#](./newsx/public/Desktop2.png)
+![#](./newsx/public/Desktop3.png)
 
 </br>
 
@@ -29,7 +32,9 @@ O objetivo deste projeto foi desenvolver uma aplicação CRUD utilizando a lingu
 > - Styled Components
 > - Node
 > - Express
-> - MySQL
+> - MySQL Workbench
+> - Postman
+> - XAMPP
 
 </br>
 
@@ -86,11 +91,17 @@ newsRouter.get("/", (req, res) => {
 })
 ```
 
-E, por último, precisamos criar as rotas para ter acesso aos dados do banco. Acima, vemos como realizar uma rota get.
+Por fim, é necessário criar as rotas para acessar os dados do banco. Na seção anterior, mostramos como criar uma rota GET. As instruções SQL são empregadas na função para definir a resposta a ser enviada, basta utilizar a função .query() na instância do banco de dados.
+
+Como desafio secundário, enfrentei a elaboração do banco de dados em MySQL, onde foram implementadas as instruções do CRUD.
 
 </br>
 
 ## 💻 Rodando o projeto
+
+![#](./newsx/public/news-create.gif)
+![#](./newsx/public/news-update.gif)
+![#](./newsx/public/news-delete.gif)
 
 Para conferir a versão final é só realizar os seguintes passos:
 
